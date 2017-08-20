@@ -1,0 +1,10 @@
+cc = gcc
+
+rule obj
+ command = ${cc} -c $in -o $out -LC:\MinGW\lib -IC:\mingw_dev_lib\include 
+rule exe
+ command = ${cc} $in -o $out -IC:\MinGW\indclude -LC:\MinGW\lib -IC:\mingw_dev_lib\include -LC:\mingw_dev_lib\lib -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2
+
+build test.o: obj test.c
+build test.exe: exe test.o
+

@@ -1,0 +1,13 @@
+*.o
+*.a
+*.bc
+*~
+*.exe
+.ninja_deps
+.ninja_log
+.DS_Store
+*.js
+*.html
+*.data
+*.dll
+
