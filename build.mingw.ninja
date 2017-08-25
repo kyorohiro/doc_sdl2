@@ -1,0 +1,14 @@
+cc = gcc
+cmd = cmd /c
+objExt = o
+appExt = exe
+objLib = a
+sep = /
+
+rule obj
+ command = ${cc} -c $in -o $out -LC:\MinGW\lib -IC:\mingw_dev_lib\include
+rule exe
+ command = ${cc} $in -o $out -IC:\MinGW\indclude -LC:\MinGW\lib -IC:\mingw_dev_lib\include -LC:\mingw_dev_lib\lib -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2
+
+subninja event${sep}build.ninja
+subninja createWindow${sep}build.ninja

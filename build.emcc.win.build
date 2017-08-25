@@ -1,10 +1,14 @@
 cc = emcc
 cmd = cmd /c
+objExt = bc
+appExt = html
+objLib = bc
+sep = /
 
 rule obj
  command = ${cmd} ${cc} -c $in -o $out -IC:\mingw_dev_lib\include\SDL2
 rule exe
  command = ${cmd} ${cc} $in -o $out -s USE_SDL=2
 
-build test.o: obj test.c
-build test.html: exe test.o
+subninja event${sep}build.ninja
+subninja createWindow${sep}build.ninja

@@ -1,0 +1,3 @@
+base = event
+build ${base}${sep}test.${objExt}: obj ${base}${sep}test.c
+build ${base}${sep}test.${appExt}: exe ${base}${sep}test.${objExt}
