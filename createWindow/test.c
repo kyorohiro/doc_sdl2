@@ -1,7 +1,7 @@
 //
 // Create Window
 //
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <stdio.h>
 
 int main( int argc, char* args[] )
@@ -21,4 +21,3 @@ int main( int argc, char* args[] )
   SDL_Quit();
   return 0;
 }
-
