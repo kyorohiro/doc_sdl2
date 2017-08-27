@@ -4,7 +4,6 @@
 #include <SDL.h>
 #include <SDL_events.h>
 #include <SDL_opengl.h>
-#include <emscripten.h>
 #include <stdio.h>
 
 int main( int argc, char* args[] )
@@ -27,5 +26,8 @@ int main( int argc, char* args[] )
 //  emscripten_set_main_loop_arg(main_loop, &ctx, 60, 1);
 //  printf("main 3 \r\n");
   SDL_GL_SwapWindow(window);
+  SDL_Delay( 20000 );
+  SDL_DestroyWindow( window );
+  SDL_Quit();
   return 0;
 }
