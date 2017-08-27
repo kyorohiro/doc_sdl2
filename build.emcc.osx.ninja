@@ -6,8 +6,9 @@ objLib = bc
 sep = /
 
 rule obj
- command = ${cmd} ${cc} -c $in -o $out -s USE_SDL=2 -O2
+ command = ${cmd} ${cc} -c $in -o $out -s USE_SDL=2 -O2 -DPLATFORM_KIND=emcc
 rule exe
  command = ${cmd} ${cc} $in -o $out -s USE_SDL=2 -O2
 
 subninja event${sep}build.ninja
+subninja createWindow${sep}build.ninja
