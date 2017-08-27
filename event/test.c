@@ -3,9 +3,12 @@
 //
 #include <SDL.h>
 #include <SDL_events.h>
-#include <emscripten.h>
 #include <stdio.h>
 
+#ifdef PLATFORM_EMCC
+#include <emscripten.h>
+#endif
+int _isQuit = 0;
 int x = 0;
 int y = 0;
 SDL_Surface *screen;
@@ -22,7 +25,8 @@ void main_loop(void*args) {
             case SDLK_DOWN: y++; break;
             default: printf("Other key"); break;
         }
-      //default: printf("Event %d", event.type); break;
+      case SDL_QUIT:
+        _isQuit = 1;
     }
     printf("loop %d %d %d %f %f\r\n", x, y, event.type, event.tfinger.x, event.tfinger.y);
   }
@@ -55,7 +59,15 @@ int main( int argc, char* args[] )
 
   SDL_RenderPresent(renderer);
   printf("main 2\r\n");
+
+#ifdef PLATFORM_EMCC
   emscripten_set_main_loop_arg(main_loop, &ctx, 60, 1);
+#else
+  do {
+    main_loop(&ctx);
+  } while(_isQuit == 0);
+#endif
+
   printf("main 3 \r\n");
   return 0;
 }
