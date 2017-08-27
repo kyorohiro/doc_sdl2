@@ -55,7 +55,7 @@ int main( int argc, char* args[] )
 
   SDL_RenderPresent(renderer);
   printf("main 2\r\n");
-  emscripten_set_main_loop_arg(main_loop, &ctx, -1, 1);
+  emscripten_set_main_loop_arg(main_loop, &ctx, 60, 1);
   printf("main 3 \r\n");
   return 0;
 }

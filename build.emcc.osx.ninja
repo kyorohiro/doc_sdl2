@@ -12,3 +12,4 @@ rule exe
 
 subninja event${sep}build.ninja
 subninja createWindow${sep}build.ninja
+subninja gl${sep}build.ninja
