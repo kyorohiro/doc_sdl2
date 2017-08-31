@@ -28,7 +28,7 @@ void main_loop(void*args) {
       case SDL_QUIT:
         _isQuit = 1;
     }
-    printf("loop %d %d %d %f %f\r\n", x, y, event.type, event.tfinger.x, event.tfinger.y);
+    printf("loop %d %d %d %f %f %d\r\n", x, y, event.type, event.tfinger.x, event.tfinger.y, event.key.keysym.sym);
   }
 /*
   // Clears the screen
