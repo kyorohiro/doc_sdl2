@@ -1,14 +1,12 @@
 #
-Windows ‚É ƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚Ý‚æ‚¤
+Windows ã« ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ã¿ã‚ˆã†
 
-CŒ¾Œê‚ÌŠJ”­ŠÂ‹«‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚Ý‚Ü‚µ‚å‚¤B
+Cè¨€èªžã®é–‹ç™ºç’°å¢ƒã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚
 
-http://emscripten.org ‚Å”z•z‚³‚ê‚Ä‚¢‚éAƒCƒ“ƒXƒg[ƒ‰[‚ðŽÀs‚·‚é‚ÆAŠJ”­ŠÂ‹«‚ªo—ˆã‚ª‚è‚Ü‚·B
+http://emscripten.org ã§é…å¸ƒã•ã‚Œã¦ã„ã‚‹ã€ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ©ãƒ¼ã‚’å®Ÿè¡Œã™ã‚‹ã¨ã€é–‹ç™ºç’°å¢ƒãŒå‡ºæ¥ä¸ŠãŒã‚Šã¾ã™ã€‚
 
 1. http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html
 
-2. Emscripten SDK Offline Installer‚ðƒNƒŠƒbƒN‚µ‚Äƒ_ƒEƒ“ƒ[ƒh
+2. Emscripten SDK Offline Installerã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
 
-3. ƒ_ƒEƒ“ƒ[ƒh‚µ‚½ emsdk-xxx-full-xxxx.exe ‚ðŽÀs
-
-
+3. ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ãŸ emsdk-xxx-full-xxxx.exe ã‚’å®Ÿè¡Œ

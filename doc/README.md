@@ -1,34 +1,34 @@
 # C x Emscripten x SDL2
 
-Emscripten�𗘗p����Ǝ��ŁAC����Ńu���E�U�[��œ��삷��A�v���P�[�V�������쐬�ł��܂��B
+Emscriptenを利用すると事で、C言語でブラウザー上で動作するアプリケーションを作成できます。
 
 
 
-### C����Ƃ�
+### C言語とは
 
-C����͍ŌÂ̌���̂ЂƂł��B
+C言語は最古の言語のひとつです。
 ...
 
 ...
 
 
-���E�Ŏ����Ă����p����Ă���OS�̂ЂƂA Linux��C����ŏ�����Ă��܂��B
+世界で持っても利用されているOSのひとつ、 LinuxはC言語で書かれています。
 ..
 
 ..
 
 ..
 
-Hacker�K�{�̌���ł���!!
+Hacker必須の言語ですね!!
 
 ## Emscripten
 
-LLVM�ŃR���p�C�����ꂽ�I�u�W�F�N�g��JavaScript�ɕϊ����邱�Ƃ��ł��܂��B
+LLVMでコンパイルされたオブジェクトをJavaScriptに変換することができます。
 
 
 
-## �֘A
+## 関連
 
-���̌^ With Scratch �� C����ł̏����҂݂����Ȉʒu�Â�
-- �΂̌^ with Scratch 2.0 �v���O��������@�@https://www.gitbook.com/book/kyorohiro/firestyle/details
-- ���̌^ With Scratch 2.0 (�Q�[���v���O��������) https://www.gitbook.com/book/kyorohiro/doc_scratch/details
+炎の型 With Scratch の C言語版の準備編みたいな位置づけ
+- 火の型 with Scratch 2.0 プログラム入門　　https://www.gitbook.com/book/kyorohiro/firestyle/details
+- 炎の型 With Scratch 2.0 (ゲームプログラム入門) https://www.gitbook.com/book/kyorohiro/doc_scratch/details
