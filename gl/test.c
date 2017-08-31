@@ -1,6 +1,7 @@
 //
 // Create Window
 //
+#define GL_GLEXT_PROTOTYPES
 #include <SDL.h>
 #include <SDL_events.h>
 #include <SDL_opengl.h>

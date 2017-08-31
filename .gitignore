@@ -11,3 +11,5 @@
 *.data
 *.dll
 *.mem
+_book
+node_modules
