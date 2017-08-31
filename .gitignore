@@ -6,10 +6,10 @@
 .ninja_deps
 .ninja_log
 .DS_Store
-*.js
 *.html
 *.data
 *.dll
+*.js
 *.mem
 _book
 node_modules
