@@ -1,0 +1,13 @@
+*.o
+*.a
+*.bc
+*~
+*.exe
+.ninja_deps
+.ninja_log
+.DS_Store
+*.html
+*.data
+*.dll
+_book
+node_modules
