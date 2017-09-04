@@ -11,8 +11,8 @@ int _isQuit = 0;
 typedef struct {
   int dummy;
 } Context;
-
 Context ctx;
+
 void main_loop(void*args) {
   SDL_Event event;
   while (SDL_PollEvent(&event)) {
@@ -22,8 +22,6 @@ void main_loop(void*args) {
     }
   }
 }
-
-
 
 int main()
 {
