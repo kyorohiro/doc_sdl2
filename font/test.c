@@ -3,7 +3,7 @@
 //
 #include <SDL.h>
 #include <SDL_events.h>
-#include <SDL/SDL_ttf.h>
+#include <SDL_ttf.h>
 
 #ifdef PLATFORM_EMCC
 #include <emscripten.h>
