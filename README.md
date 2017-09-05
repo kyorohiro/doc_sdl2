@@ -17,11 +17,14 @@ SDL2 memo
 
 # Lincense
 
-### ./assets/Roboto-Bold.ttf
+- ./assets/Roboto-Bold.ttf
 https://fonts.google.com/specimen/Roboto?selection.family=Roboto
 
-### Other
+- ./assets/se_maoudamashii_element_thunder05.ogg
+http://maoudamashii.jokersounds.com/music_rule.html
 
+
+- Other
 <p xmlns:dct="http://purl.org/dc/terms/">
   <a rel="license"
      href="http://creativecommons.org/publicdomain/zero/1.0/">
@@ -38,3 +41,5 @@ https://fonts.google.com/specimen/Roboto?selection.family=Roboto
 # REF RECOMMEND SITE
 
 - https://lyceum-allotments.github.io/2016/06/emscripten-and-sdl-2-tutorial-part-1/
+
+- https://github.com/jakebesworth/Simple-SDL2-Audio
