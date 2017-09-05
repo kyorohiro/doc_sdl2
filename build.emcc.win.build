@@ -10,5 +10,5 @@ rule obj
 rule exe
  command = ${cmd} ${cc} $in -o $out -s USE_SDL=2
 
-subninja event${sep}build.ninja
-subninja createWindow${sep}build.ninja
+subninja sdl2_event${sep}build.ninja
+subninja sdl2_createWindow${sep}build.ninja

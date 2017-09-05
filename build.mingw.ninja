@@ -10,5 +10,5 @@ rule obj
 rule exe
  command = ${cc} $in -o $out -IC:\MinGW\indclude -LC:\MinGW\lib -IC:\mingw_dev_lib\include -LC:\mingw_dev_lib\lib -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2
 
-subninja event${sep}build.ninja
-subninja createWindow${sep}build.ninja
+subninja sdl2_event${sep}build.ninja
+subninja sdl2_createWindow${sep}build.ninja
