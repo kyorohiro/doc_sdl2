@@ -54,6 +54,10 @@ void _onInit() {
   printf("## onInit\r\n");
 
   glEnable(GL_DEPTH_TEST);
+
+  //glEnable(GL_ALPHA_TEST);
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   glViewport(0, 0, width, height);
   glClearColor(1.0, 0.7, 0.7, 1.0);//rgba
   glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
@@ -66,7 +70,7 @@ void _onInit() {
     "uniform sampler2D texture;\n"
     "varying vec2 textureCoord;\n"
     "void main() {\n"
-    "  gl_FragColor = texture2D(texture, textureCoord);\n"
+    "  gl_FragColor = texture2D(texture, textureCoord)* vec4(1.0,1.0,1.0,1.0);\n"
 //    "  gl_FragColor = vec4(1.0,1.0,1.0,1.0);\n"
     "}\n");
   verShader = cglu_loadShader(GL_VERTEX_SHADER,
@@ -109,11 +113,21 @@ void _onDisplay() {
 
   // texture
   GLenum data_fmt;
-  Uint8 test = SDL_MapRGB(image->format, 0xAA,0xBB,0xCC)&0xFF;
-  if      (test==0xAA) data_fmt=         GL_RGB;
-  else if (test==0xCC) data_fmt=0x80E0;//GL_BGR;
-  else {
-      printf("Error: Loaded surface was neither RGB or BGR!\r\n"); return;
+  GLint nOfColors = image->format->BytesPerPixel;
+  if (nOfColors == 4) {
+    if (image->format->Rmask == 0x000000ff) {
+      data_fmt = GL_RGBA;
+    } else {
+      data_fmt = GL_BGRA;
+    }
+  } else if (nOfColors == 3) {
+    if (image->format->Rmask == 0x000000ff){
+      data_fmt = GL_RGBA;
+    } else {
+      data_fmt = GL_BGRA;
+    }
+  } else {
+    printf("warning: the image is not truecolor..  this will probably break\n");
   }
   glBindTexture(GL_TEXTURE_2D, textureBuffer);
 //  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
@@ -123,10 +137,10 @@ void _onDisplay() {
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-  glTexImage2D(GL_TEXTURE_2D, 0, data_fmt,
+  glTexImage2D(GL_TEXTURE_2D, 0, data_fmt,//GL_RGBA,//data_fmt,
       image->w, image->h, 0, data_fmt, GL_UNSIGNED_BYTE, image->pixels);
   glGenerateMipmap(GL_TEXTURE_2D);
-  printf("%d %d %d\r\n", image->w, image->h, test);
+//  printf("%d %d %d\r\n", image->w, image->h, test);
   SDL_FreeSurface(image);
   //
   // shader
@@ -168,9 +182,8 @@ int main()
 
   //
   //
-
-_onInit();
-_onDisplay();
+  _onInit();
+  _onDisplay();
   //
   //
   SDL_RenderPresent(renderer);

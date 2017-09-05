@@ -32,7 +32,7 @@ int main()
 
   SDL_CreateWindowAndRenderer(600, 400, 0, &window, &renderer);
 
-  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+  SDL_SetRenderDrawColor(renderer, 255, 155, 155, 255);
   SDL_RenderClear(renderer);
 
   //
