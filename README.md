@@ -37,6 +37,11 @@ http://maoudamashii.jokersounds.com/music_rule.html
   rights to this work.
 </p>
 
+# Info
+- 2017y 9m 6d
+ mixer/test.html do not executablem,
+
+
 
 # REF RECOMMEND SITE
 
