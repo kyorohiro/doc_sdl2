@@ -3,7 +3,9 @@
 //
 #include <SDL.h>
 #include <stdio.h>
+
 #ifdef PLATFORM_EMCC
+#include <SDL_touch.h>
 #include <emscripten.h>
 #endif
 
