@@ -53,7 +53,7 @@ int main( int argc, char* args[] )
   text_surface = TTF_RenderText_Solid(font, "test test !!", fg);
   SDL_Flip( screen );
 
-  printf("ttf \r\n");
+  printf("ttf %d %d\r\n",  text_surface->w, text_surface->h);
   //
   //
 #ifdef PLATFORM_EMCC
