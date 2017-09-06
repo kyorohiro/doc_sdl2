@@ -1,6 +1,7 @@
 //
 // FONT
 // https://github.com/kripken/emscripten/issues/2708
+// https://groups.google.com/forum/#!topic/emscripten-discuss/lfXaVdyYztw
 //
 #include <SDL.h>
 #include <SDL_image.h>
