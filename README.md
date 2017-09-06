@@ -39,11 +39,11 @@ http://maoudamashii.jokersounds.com/music_rule.html
 
 # Info
 - 2017y 9m 6d
- sdl2_mixer/test.html do not executablem,
+ sdl2_mixer/test.html do not executable,
 
 
 
-# REF RECOMMEND SITE
+# REF & USEFUL
 
 - https://lyceum-allotments.github.io/2016/06/emscripten-and-sdl-2-tutorial-part-1/
 
