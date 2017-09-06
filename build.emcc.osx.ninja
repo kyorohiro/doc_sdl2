@@ -31,3 +31,4 @@ subninja sdl2_font${sep}build.ninja
 subninja sdl2_mixer${sep}build.ninja
 
 subninja sdl1_createWindow${sep}build.ninja
+subninja sdl1_event${sep}build.ninja

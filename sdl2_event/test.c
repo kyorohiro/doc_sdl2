@@ -30,14 +30,7 @@ void main_loop(void*args) {
     }
     printf("loop %d %d %d %f %f %d\r\n", x, y, event.type, event.tfinger.x, event.tfinger.y, event.key.keysym.sym);
   }
-/*
-  // Clears the screen
-  SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 255, 255, 255));
 
-  // fill stuff
-  SDL_Rect rect = { x, y, 175, 125 };
-  SDL_FillRect(screen, &rect, SDL_MapRGBA(screen->format, 0x22, 0x22, 0xff, 0xff));
-*/
 }
 
 typedef struct {

@@ -1,0 +1,3 @@
+base = sdl1_event
+build ${base}${sep}test.${objExt}: obj01 ${base}${sep}test.c
+build ${base}${sep}test.${appExt}: exe01 ${base}${sep}test.${objExt}
