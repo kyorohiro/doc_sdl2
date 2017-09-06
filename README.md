@@ -41,7 +41,7 @@ http://maoudamashii.jokersounds.com/music_rule.html
 # Info
 - 2017y 9m 6d
 -- sdl2_mixer/test.html do not executable,
--- sdl1_font/test.htmp 's font size is wrong
+~~ -- sdl1_font/test.htmp 's font size is wrong~~
 
 
 
