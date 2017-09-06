@@ -60,7 +60,6 @@ int main( int argc, char* args[] )
 
   SDL_Color fg = {0,0,0,255};
   SDL_Surface *text_surface = TTF_RenderText_Blended(font, "test test !!", fg);
-
   text_tex = SDL_CreateTextureFromSurface(renderer, text_surface);
   SDL_FreeSurface(text_surface);
 

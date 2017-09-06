@@ -2,6 +2,7 @@
 // FONT
 // https://github.com/kripken/emscripten/issues/2708
 // https://groups.google.com/forum/#!topic/emscripten-discuss/lfXaVdyYztw
+// http://www.sdltutorials.com/sdl-ttf
 //
 #include <SDL.h>
 #include <SDL_image.h>
@@ -39,16 +40,18 @@ int main( int argc, char* args[] )
 //  screen = SDL_SetVideoMode( 640, 480, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
   screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE );
   SDL_WM_SetCaption( "title", 0 );
-  SDL_Flip( screen );
   //
   //
   printf("ttf init \r\n");
   if(TTF_Init()< 0) {
     printf("Failed at TTF_Init\r\n");
   }
-  TTF_Font *font = TTF_OpenFont("./assets/Roboto-Bold.ttf", 50);
+  SDL_WM_SetCaption( "TTF Test", NULL );
+
+  TTF_Font *font = TTF_OpenFont("./assets/Roboto-Bold.ttf", 28);
   SDL_Color fg = {255, 255, 255,255};
-  text_surface = TTF_RenderText_Blended(font, "test test !!", fg);
+  text_surface = TTF_RenderText_Solid(font, "test test !!", fg);
+  SDL_Flip( screen );
 
   printf("ttf \r\n");
   //
