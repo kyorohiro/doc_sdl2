@@ -1,0 +1,3 @@
+base = sdl1_font
+build ${base}${sep}test.${objExt}: obj01 ${base}${sep}test.c
+build ${base}${sep}test.${appExt}: exeExt01 ${base}${sep}test.${objExt}
