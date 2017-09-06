@@ -18,7 +18,8 @@ rule obj01
 rule exe01
   command = ${cmd} ${cc} $in -o $out -s USE_SDL_TTF=1 -s USE_SDL=1 -s USE_SDL_IMAGE=1 -O2
 rule exeExt01
-  command = ${cc} $in -o $out -s USE_SDL=1 -s USE_SDL_TTF=1 -s USE_SDL_IMAGE=1 --preload-file assets -O2
+  command = ${cc} $in -o $out -s USE_SDL=1 -s USE_SDL_TTF=1 -s USE_SDL_IMAGE=1 --preload-file assets -O2 --use-preload-plugins
+#  command = ${cc} $in -o $out -s USE_SDL=1 -s USE_SDL_TTF=1 -s USE_SDL_IMAGE=1 --preload-file assets -O2 -s STB_IMAGE=1
 
 
 subninja gl${sep}build.ninja
@@ -32,3 +33,4 @@ subninja sdl2_mixer${sep}build.ninja
 
 subninja sdl1_createWindow${sep}build.ninja
 subninja sdl1_event${sep}build.ninja
+subninja sdl1_image${sep}build.ninja

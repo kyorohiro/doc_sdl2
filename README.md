@@ -48,3 +48,7 @@ http://maoudamashii.jokersounds.com/music_rule.html
 - https://lyceum-allotments.github.io/2016/06/emscripten-and-sdl-2-tutorial-part-1/
 
 - https://github.com/jakebesworth/Simple-SDL2-Audio
+
+- SDL2 Tutorial http://lazyfoo.net/tutorials/SDL/index.php
+
+- SDL1 Tutorial http://lazyfoo.net/SDL_tutorials/

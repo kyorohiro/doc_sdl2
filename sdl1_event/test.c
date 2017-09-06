@@ -32,6 +32,15 @@ void main_loop(void*args) {
     switch (event.type) {
       case SDL_QUIT:
         isQuit = 1;
+      case SDL_MOUSEMOTION:
+        printf("mouse motion : %d %d\r\n", event.motion.x, event.motion.y);
+        break;
+      case SDL_MOUSEBUTTONDOWN:
+        printf("mouse down\r\n");
+        break;
+      case SDL_MOUSEBUTTONUP:
+        printf("mouse up\r\n");
+        break;
     }
   }
 
