@@ -39,7 +39,7 @@ http://maoudamashii.jokersounds.com/music_rule.html
 
 # Info
 - 2017y 9m 6d
- mixer/test.html do not executablem,
+ sdl2_mixer/test.html do not executablem,
 
 
 
