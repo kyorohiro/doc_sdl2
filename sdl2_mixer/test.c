@@ -4,7 +4,6 @@
 #include <SDL.h>
 #include <SDL_events.h>
 #include <stdio.h>
-#include <SDL_audio.h>
 
 #ifdef PLATFORM_EMCC
 #include <emscripten.h>
