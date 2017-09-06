@@ -25,17 +25,17 @@ libSDLMixer = /usr/local/Cellar/sdl_mixer/1.2.12_2/lib/
 
 
 rule obj
- command = ${cc} -c $in -o $out -O2 -I${incSDL2} -I${incSDL2Image} -I${incSDL2TTF} -I${incSDL2Mixer} -DPLATFORM_OSX
+  command = ${cc} -c $in -o $out -O2 -I${incSDL2} -I${incSDL2Image} -I${incSDL2TTF} -I${incSDL2Mixer} -DPLATFORM_OSX
 rule exe
- command = ${cc} $in -o $out -O2 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -L${libSDL2} -L${libSDL2Image} -L${libSDL2TTF} -L${libSDL2Mixer} -framework OpenGL
+  command = ${cc} $in -o $out -O2 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -L${libSDL2} -L${libSDL2Image} -L${libSDL2TTF} -L${libSDL2Mixer} -framework OpenGL
 rule exeExt
- command = ${cc} $in -o $out -O2 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -L${libSDL2} -L${libSDL2Image} -L${libSDL2TTF} -L${libSDL2Mixer} -framework OpenGL
+  command = ${cc} $in -o $out -O2 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -L${libSDL2} -L${libSDL2Image} -L${libSDL2TTF} -L${libSDL2Mixer} -framework OpenGL
 
- rule obj01
+rule obj01
   command = ${cc} -c $in -o $out -O2 -I${incSDL} -I${incSDLImage} -I${incSDLTTF} -I${incSDLMixer} -DPLATFORM_OSX
- rule exe01
+rule exe01
   command = ${cc} $in -o $out -O2 -lSDLmain -lSDL -lSDL_image -lSDL_mixer -lSDL_ttf -L${libSDL} -L${libSDLImage} -L${libSDLTTF} -L${libSDLMixer} -framework OpenGL
- rule exeExt01
+rule exeExt01
   command = ${cc} $in -o $out -O2 -lSDLmain -lSDL -lSDL_image -lSDL_mixer -lSDL_ttf -L${libSDL} -L${libSDLImage} -L${libSDLTTF} -L${libSDLMixer} -framework OpenGL
 
 subninja gl${sep}build.ninja
