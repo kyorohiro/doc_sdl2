@@ -1,3 +1,6 @@
-base = gl
+
+
+
+base = sdl2_gl_triangle
 build ${base}${sep}test.${objExt}: obj ${base}${sep}test.c
 build ${base}${sep}test.${appExt}: exe ${base}${sep}test.${objExt}
