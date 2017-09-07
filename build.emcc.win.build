@@ -6,6 +6,7 @@ objLib = bc
 sep = /
 
 
+
 rule obj
  command = ${cmd} ${cc} -c $in -o $out -s USE_SDL_TTF=2 -s USE_SDL_TTF=2 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -O2 -DPLATFORM_EMCC
 rule exe
