@@ -5,10 +5,28 @@ appExt = exe
 objLib = a
 sep = /
 
+incSDL2 = C:\mingw_dev_lib\include\SDL2
+incSDL2Image = 
+incSDL2TTF = 
+incSDL2Mixer = 
+libSDL2 = C:\mingw_dev_lib\lib 
+libSDL2Image = 
+libSDL2TTF = 
+libSDL2Mixer = 
+
+incSDL = 
+incSDLImage = 
+incSDLTTF = 
+incSDLMixer = 
+libSDL = 
+libSDLImage = 
+libSDLTTF = 
+libSDLMixer = 
+
 rule obj
- command = ${cc} -c $in -o $out -LC:\MinGW\lib -IC:\mingw_dev_lib\include -DPLATFORM_MINGW
+ command = ${cc} -c $in -o $out -LC:\MinGW\lib -I${incSDL2} -DPLATFORM_MINGW
 rule exe
- command = ${cc} $in -o $out -IC:\MinGW\indclude -LC:\MinGW\lib -IC:\mingw_dev_lib\include -LC:\mingw_dev_lib\lib -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2
+ command = ${cc} $in -o $out -IC:\MinGW\indclude -LC:\MinGW\lib -I${incSDL2} -L${libSDL2} -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2
 
 subninja sdl2_event${sep}build.ninja
 subninja sdl2_createWindow${sep}build.ninja
