@@ -43,6 +43,17 @@ void main_loop(void*args) {
       case SDL_MOUSEBUTTONUP:
         printf("mouse up\r\n");
         break;
+#ifdef PLATFORM_EMCC
+      case SDL_FINGERMOTION:
+      case SDL_FINGERDOWN:
+      case SDL_FINGERUP:
+        printf("finger event \r\n");
+        SDL_TouchFingerEvent *t = (SDL_TouchFingerEvent*)&event;
+        printf("type:%d, timestamp: %u, touchId: %llu, fingerId: %llu, x: %f, y: %f, dx: %f, dy: %f, pressure: %f\n",
+         event.type, t->timestamp, t->touchId, t->fingerId, t->x, t->y, t->dx, t->dy, t->pressure);
+        break;
+
+#endif
     }
   }
 
