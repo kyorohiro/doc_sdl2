@@ -6,9 +6,27 @@ objLib = bc
 sep = /
 
 rule obj
- command = ${cmd} ${cc} -c $in -o $out -IC:\mingw_dev_lib\include\SDL2 -DPLATFORM_EMCC
+ command = ${cmd} ${cc} -c $in -o $out -s USE_SDL_TTF=2 -s USE_SDL_TTF=2 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -O2 -DPLATFORM_EMCC
 rule exe
- command = ${cmd} ${cc} $in -o $out -s USE_SDL=2
+ command = ${cmd} ${cc} $in -o $out -s USE_SDL_TTF=2 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -O2
+rule exeExt
+ command = ${cmd} ${cc} $in -o $out -s USE_SDL=2 -s USE_SDL_TTF=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='["png"]' --preload-file assets -O2
 
-subninja sdl2_event${sep}build.ninja
+
+rule obj01
+  command = ${cmd} ${cc} -c $in -o $out -s USE_SDL_TTF=1 -s USE_SDL_TTF=1 -s USE_SDL=1 -s USE_SDL_IMAGE=1 -O2 -DPLATFORM_EMCC
+rule exe01
+  command = ${cmd} ${cc} $in -o $out -s USE_SDL_TTF=1 -s USE_SDL=1 -s USE_SDL_IMAGE=1 -O2
+rule exeExt01
+  command = ${cmd} ${cc} $in -o $out -s USE_SDL=1 -s USE_SDL_TTF=1 -s USE_SDL_IMAGE=1 --preload-file assets -O2 --use-preload-plugins
+#  command = ${cc} $in -o $out -s USE_SDL=1 -s USE_SDL_TTF=1 -s USE_SDL_IMAGE=1 --preload-file assets -O2 -s STB_IMAGE=1
+
+
 subninja sdl2_createWindow${sep}build.ninja
+subninja sdl2_event${sep}build.ninja
+
+subninja sdl1_createWindow${sep}build.ninja
+subninja sdl1_event${sep}build.ninja
+subninja sdl1_image${sep}build.ninja
+subninja sdl1_mixer${sep}build.ninja
+subninja sdl1_font${sep}build.ninja
