@@ -10,11 +10,17 @@ int main( int argc, char* args[] )
   printf("main \r\n");
   SDL_Init( SDL_INIT_EVERYTHING );
   SDL_Surface* screen = NULL;
-//  screen = SDL_SetVideoMode( 640, 480, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
-  screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE );
+  screen = SDL_SetVideoMode( 640, 480, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
+//  screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE );
   SDL_WM_SetCaption( "title", 0 );
 
+  int imgFlags = IMG_INIT_PNG;
+  if(imgFlags != IMG_Init( imgFlags )){
+    printf( "Failed at IMGE_Init %s\n", IMG_GetError() );
+  }
   SDL_Surface* loadedImage = IMG_Load( "assets/icon.png" );
+//  SDL_Surface* loadedImage =  SDL_ConvertSurface(loadedImage1, screen->format, 0);
+ // SDL_FreeSurface( loadedImage1 );
   SDL_Rect clip;
   clip.x = 0;
   clip.y = 0;
@@ -23,7 +29,10 @@ int main( int argc, char* args[] )
   SDL_Rect offset;
   offset.x = 0;
   offset.y = 0;
-  SDL_BlitSurface( loadedImage, &clip, screen, &offset  );
+
+  SDL_BlitSurface( loadedImage, NULL, screen, NULL );
+
+//  SDL_UpdateRect(screen, 0, 0, 640, 480);
   SDL_Flip( screen );
 
 #ifdef PLATFORM_EMCC
