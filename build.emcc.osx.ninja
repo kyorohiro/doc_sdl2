@@ -45,3 +45,4 @@ subninja sdl1_gl${sep}build.ninja
 subninja sdl1_gl_triangle${sep}build.ninja
 subninja sdl1_gl_texture${sep}build.ninja
 subninja sdl1_gl_ttf${sep}build.ninja
+subninja sdl1_gl_textureFromRGBSurface${sep}build.ninja
