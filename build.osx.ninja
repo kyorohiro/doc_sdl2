@@ -53,3 +53,4 @@ subninja sdl1_image${sep}build.ninja
 subninja sdl1_mixer${sep}build.ninja
 subninja sdl1_font${sep}build.ninja
 subninja sdl1_gl${sep}build.ninja
+subninja sdl1_gl_triangle${sep}build.ninja
