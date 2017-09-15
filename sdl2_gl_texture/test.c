@@ -41,13 +41,14 @@ int width = 400;
 int height = 300;
 
 GLfloat vertexBufferData[] = {
-  0.0f, 0.5f, 0.0f,   0.0, 0.0,
-  -0.5f, -0.5f, 0.0f, 1.0, 0.0,
-  0.5f, -0.5f, 0.0f,  0.0, 1.0
+  -0.5f, 0.5f, 0.0f,  0.0, 0.0,
+  0.5f, 0.5f, 0.0f,   1.0, 0.0,
+  0.5f, -0.5f, 0.0f,  1.0, 1.0,
+  -0.5f, -0.5f, 0.0f, 0.0, 1.0,
 };
 
 GLshort indexData[] = {
-  0,1,2
+  0,1,2,  0,2,3
 };
 
 void _onInit() {
@@ -153,14 +154,14 @@ void _onDisplay() {
 
   //
   glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*5*3, vertexBufferData, GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*5*4, vertexBufferData, GL_STATIC_DRAW);
 
   glVertexAttribPointer(positionLoc, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (void*)0);
   glVertexAttribPointer(texCoordLoc, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (void*)(3* sizeof(GLfloat)));
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLshort)*3, indexData, GL_STATIC_DRAW);
-  glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_SHORT, 0);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLshort)*6, indexData, GL_STATIC_DRAW);
+  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
 
   glDeleteBuffers(1, &vertexBuffer);
   glDeleteBuffers(1, &indexBuffer);

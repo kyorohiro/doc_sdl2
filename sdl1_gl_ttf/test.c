@@ -36,6 +36,7 @@ GLfloat vertexBufferData[] = {
   0.5f, 0.5f, 0.0f,   1.0, 0.0,
   0.5f, -0.5f, 0.0f,  1.0, 1.0,
   -0.5f, -0.5f, 0.0f, 0.0, 1.0,
+
 };
 
 GLshort indexData[] = {
@@ -240,7 +241,6 @@ GLuint cglu_loadShader(GLenum type, const char *shaderSrc) {
 
   return shader;
 }
-
 
 
 
