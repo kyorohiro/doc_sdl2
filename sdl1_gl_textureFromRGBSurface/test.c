@@ -109,7 +109,8 @@ void _onDisplay() {
 #endif
    );
 
-
+  //image =SDL_DisplayFormatAlpha(image);
+  //SDL_SetAlpha(image, 0, SDL_ALPHA_TRANSPARENT);
   SDL_Surface *textSurface = IMG_Load("./assets/icon.png");
 #ifdef PLATFORM_EMCC
   {
@@ -128,11 +129,13 @@ void _onDisplay() {
       }  
   }
 #else
-  SDL_Surface *tmp = SDL_DisplayFormat(textSurface);
-  SDL_FreeSurface(textSurface);
-  SDL_BlitSurface(tmp, NULL, image, NULL);
-  textSurface = tmp;
-//   SDL_BlitSurface(textSurface, NULL, image, NULL);
+  //SDL_Surface *tmp = SDL_DisplayFormatAlpha(textSurface);
+  //SDL_FreeSurface(textSurface);
+//  SDL_SetSurfaceAlphaMod(image, 255);
+  SDL_SetAlpha(textSurface, 0, SDL_ALPHA_TRANSPARENT);
+  //SDL_BlitSurface(tmp, NULL, image, NULL);
+  //textSurface = tmp;
+   SDL_BlitSurface(textSurface, NULL, image, NULL);
 #endif
   glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
@@ -170,6 +173,7 @@ void _onDisplay() {
 
   glTexImage2D(GL_TEXTURE_2D, 0, data_fmt,//GL_RGBA,//data_fmt,
       image->w, image->h, 0, data_fmt, GL_UNSIGNED_BYTE, image->pixels);
+//  glGenerateMipmap(GL_TEXTURE_2D);
   SDL_FreeSurface(textSurface);
   SDL_FreeSurface(image);
 
