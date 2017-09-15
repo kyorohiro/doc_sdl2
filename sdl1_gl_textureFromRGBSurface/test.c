@@ -95,8 +95,13 @@ void _onDisplay() {
   //
   int texture;
 
+
   SDL_Surface* image = SDL_CreateRGBSurface(
-    SDL_SWSURFACE, 512, 512, 32,
+//    SDL_SWSURFACE,
+    SDL_SRCALPHA,
+//    SDL_HWSURFACE, 
+//    SDL_SRCCOLORKEY,
+    512, 512, 32,
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
      0xFF000000, 0x00FF0000, 0x0000FF00, 0x000000FF
 #else
@@ -127,6 +132,7 @@ void _onDisplay() {
   SDL_FreeSurface(textSurface);
   SDL_BlitSurface(tmp, NULL, image, NULL);
   textSurface = tmp;
+//   SDL_BlitSurface(textSurface, NULL, image, NULL);
 #endif
   glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 

@@ -93,6 +93,7 @@ void _onDisplay() {
   //
   int texture;
   SDL_Surface *image = IMG_Load("./assets/icon.png");
+  //image =SDL_DisplayFormatAlpha(image);
   if (!image)
   {
      printf("Failed at IMG_Load: %s\n", IMG_GetError());
