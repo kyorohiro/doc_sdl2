@@ -4,7 +4,7 @@
 #include <SDL_events.h>
 #include <SDL_opengl.h>
 #include <SDL_image.h>
-#include <stdio.h>
+#include <SDL_ttf.h>
 
 #ifdef PLATFORM_EMCC
 #include <emscripten.h>
@@ -94,12 +94,18 @@ void _onDisplay() {
   //
   //
   int texture;
-  SDL_Surface *image = IMG_Load("./assets/icon.png");
-  if (!image)
-  {
-     printf("Failed at IMG_Load: %s\n", IMG_GetError());
-     return ;
-  }
+  SDL_Surface* image = SDL_CreateRGBSurface(
+    SDL_SWSURFACE, 512, 512, 32,
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+     0xFF000000, 0x00FF0000, 0x0000FF00, 0x000000FF
+#else
+     0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000
+#endif
+   );
+
+  SDL_Surface* textSurface = IMG_Load("./assets/icon.png");
+  SDL_BlitSurface(textSurface, NULL, image, NULL);
+
 
 
   glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
@@ -139,8 +145,11 @@ void _onDisplay() {
   glTexImage2D(GL_TEXTURE_2D, 0, data_fmt,//GL_RGBA,//data_fmt,
       image->w, image->h, 0, data_fmt, GL_UNSIGNED_BYTE, image->pixels);
   glGenerateMipmap(GL_TEXTURE_2D);
-//  printf("%d %d %d\r\n", image->w, image->h, test);
+
+
+  SDL_FreeSurface(textSurface);
   SDL_FreeSurface(image);
+
   //
   // shader
   glUseProgram(program);
@@ -170,6 +179,11 @@ void _onDisplay() {
 int main()
 {
   SDL_Init(SDL_INIT_VIDEO);
+
+  printf("ttf init \r\n");
+  if(TTF_Init()< 0) {
+    printf("Failed at TTF_Init\r\n");
+  }
 
   SDL_Window *window;
   SDL_Renderer *renderer;
