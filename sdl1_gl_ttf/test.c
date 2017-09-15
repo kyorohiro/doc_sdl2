@@ -7,6 +7,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_opengl.h>
+#include <SDL_ttf.h>
 
 #ifdef PLATFORM_EMCC
 #include <emscripten.h>
@@ -24,6 +25,7 @@ typedef struct {
 
 Context ctx;
 SDL_Surface* screen = NULL;
+SDL_Surface *textSurface;
 
 int frgShader;
 int verShader;
@@ -93,13 +95,28 @@ void _onDisplay() {
   //
   //
   int texture;
+  /*
   SDL_Surface *image = IMG_Load("./assets/icon.png");
   if (!image)
   {
      printf("Failed at IMG_Load: %s\n", IMG_GetError());
      return ;
-  }
+  }*/
 
+  SDL_Surface* image = SDL_CreateRGBSurface(
+    SDL_SWSURFACE, 256, 256, 32,
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+     0xFF000000, 0x00FF0000, 0x0000FF00, 0x000000FF
+#else
+     0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000
+#endif
+   );
+
+
+  TTF_Font *font = TTF_OpenFont("./assets/Roboto-Bold.ttf", 28*2);
+  SDL_Color fg = {255, 255, 255,255};
+  textSurface= TTF_RenderText_Solid(font, "test test !!", fg);
+  SDL_BlitSurface(textSurface, NULL, image, NULL);
 
   glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
@@ -130,8 +147,6 @@ void _onDisplay() {
     printf("warning: the image is not truecolor..  this will probably break\n");
   }
   glBindTexture(GL_TEXTURE_2D, textureBuffer);
-//  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-//  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -139,9 +154,11 @@ void _onDisplay() {
 
   glTexImage2D(GL_TEXTURE_2D, 0, data_fmt,//GL_RGBA,//data_fmt,
       image->w, image->h, 0, data_fmt, GL_UNSIGNED_BYTE, image->pixels);
- // glGenerateMipmap(GL_TEXTURE_2D);
-//  printf("%d %d %d\r\n", image->w, image->h, test);
+  SDL_FreeSurface(textSurface);
   SDL_FreeSurface(image);
+
+
+
   //
   // shader
   glUseProgram(program);
@@ -173,6 +190,11 @@ int main( int argc, char* args[] )
 {
   printf("main \r\n");
   SDL_Init( SDL_INIT_EVERYTHING );
+
+  printf("ttf init \r\n");
+  if(TTF_Init()< 0) {
+    printf("Failed at TTF_Init\r\n");
+  }
 //  screen = SDL_SetVideoMode( 640, 480, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
   screen = SDL_SetVideoMode( 640, 480, 32, SDL_HWSURFACE|SDL_OPENGL| SDL_DOUBLEBUF);
   if(screen == NULL) {
