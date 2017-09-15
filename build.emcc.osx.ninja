@@ -25,11 +25,15 @@ rule exeExt01
 subninja sdl2_gl${sep}build.ninja
 subninja sdl2_gl_triangle${sep}build.ninja
 subninja sdl2_gl_texture${sep}build.ninja
+subninja sdl2_gl_ttf${sep}build.ninja
 subninja sdl2_createWindow${sep}build.ninja
 subninja sdl2_event${sep}build.ninja
 subninja sdl2_image${sep}build.ninja
 subninja sdl2_font${sep}build.ninja
 subninja sdl2_mixer${sep}build.ninja
+
+
+
 
 subninja sdl1_createWindow${sep}build.ninja
 subninja sdl1_event${sep}build.ninja

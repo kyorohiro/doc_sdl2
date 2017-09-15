@@ -1,0 +1,3 @@
+base = sdl2_gl_ttf
+build ${base}${sep}test.${objExt}: obj ${base}${sep}test.c
+build ${base}${sep}test.${appExt}: exeExt ${base}${sep}test.${objExt}

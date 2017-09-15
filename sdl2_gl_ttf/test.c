@@ -1,12 +1,9 @@
-//
-// FONT
-// https://github.com/kripken/emscripten/issues/2708
-// https://groups.google.com/forum/#!topic/emscripten-discuss/lfXaVdyYztw
-// http://www.sdltutorials.com/sdl-ttf
-//
+
+#define GL_GLEXT_PROTOTYPES
 #include <SDL.h>
-#include <SDL_image.h>
+#include <SDL_events.h>
 #include <SDL_opengl.h>
+#include <SDL_image.h>
 #include <SDL_ttf.h>
 
 #ifdef PLATFORM_EMCC
@@ -17,15 +14,26 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-GLuint cglu_loadShader(GLenum type, const char *shaderSrc);
-
+int _isQuit = 0;
 typedef struct {
   int dummy;
 } Context;
-
 Context ctx;
-SDL_Surface* screen = NULL;
 
+GLuint cglu_loadShader(GLenum type, const char *shaderSrc);
+
+void main_loop(void*args) {
+  SDL_Event event;
+  while (SDL_PollEvent(&event)) {
+    switch (event.type) {
+      case SDL_QUIT:
+        _isQuit = 1;
+    }
+  }
+}
+
+
+int fps;
 int frgShader;
 int verShader;
 int program;
@@ -37,19 +45,11 @@ GLfloat vertexBufferData[] = {
   0.5f, 0.5f, 0.0f,   1.0, 0.0,
   0.5f, -0.5f, 0.0f,  1.0, 1.0,
   -0.5f, -0.5f, 0.0f, 0.0, 1.0,
-
 };
 
 GLshort indexData[] = {
   0,1,2,  0,2,3
 };
-
-void main_loop(void*args) {
-}
-
-
-
-
 
 void _onInit() {
   printf("## onInit\r\n");
@@ -94,7 +94,6 @@ void _onDisplay() {
   //
   //
   int texture;
-
   SDL_Surface* image = SDL_CreateRGBSurface(
     SDL_SWSURFACE, 256, 256, 32,
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -105,10 +104,12 @@ void _onDisplay() {
    );
 
 
-  TTF_Font *font = TTF_OpenFont("./assets/Roboto-Bold.ttf", 28*2);
+  TTF_Font* font = TTF_OpenFont("./assets/Roboto-Bold.ttf", 28*2);
   SDL_Color fg = {255, 255, 255,255};
-  SDL_Surface *textSurface = TTF_RenderText_Solid(font, "test test !!", fg);
+  SDL_Surface* textSurface = TTF_RenderText_Solid(font, "test test !!", fg);
   SDL_BlitSurface(textSurface, NULL, image, NULL);
+
+
 
   glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
@@ -131,9 +132,9 @@ void _onDisplay() {
     }
   } else if (nOfColors == 3) {
     if (image->format->Rmask == 0x000000ff){
-      data_fmt = GL_RGB;
+      data_fmt = GL_RGBA;
     } else {
-      data_fmt = GL_BGR;
+      data_fmt = GL_BGRA;
     }
   } else {
     printf("warning: the image is not truecolor..  this will probably break\n");
@@ -146,10 +147,11 @@ void _onDisplay() {
 
   glTexImage2D(GL_TEXTURE_2D, 0, data_fmt,//GL_RGBA,//data_fmt,
       image->w, image->h, 0, data_fmt, GL_UNSIGNED_BYTE, image->pixels);
+  glGenerateMipmap(GL_TEXTURE_2D);
+
+
   SDL_FreeSurface(textSurface);
   SDL_FreeSurface(image);
-
-
 
   //
   // shader
@@ -177,49 +179,38 @@ void _onDisplay() {
 
 }
 
-
-int main( int argc, char* args[] )
+int main()
 {
-  printf("main \r\n");
-  SDL_Init( SDL_INIT_EVERYTHING );
+  SDL_Init(SDL_INIT_VIDEO);
 
   printf("ttf init \r\n");
   if(TTF_Init()< 0) {
     printf("Failed at TTF_Init\r\n");
   }
-//  screen = SDL_SetVideoMode( 640, 480, 0, SDL_HWSURFACE | SDL_DOUBLEBUF );
-  screen = SDL_SetVideoMode( 640, 480, 32, SDL_HWSURFACE|SDL_OPENGL| SDL_DOUBLEBUF);
-  if(screen == NULL) {
-    printf("Failed at SDL_SetVideoMode\r\n");
-    return 0;
-  }
-  SDL_WM_SetCaption( "title", 0 );
+
+  SDL_Window *window;
+  SDL_Renderer *renderer;
+
+  SDL_CreateWindowAndRenderer(600, 400, 0, &window, &renderer);
+
+  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+  SDL_RenderClear(renderer);
+
   //
   //
-  printf("ttf init \r\n");
   _onInit();
   _onDisplay();
-  SDL_GL_SwapBuffers();//SDL_Flip( screen );
+  //
+  //
+  SDL_RenderPresent(renderer);
 
-  printf("ttf \r\n");
-  //
-  //
-#ifdef PLATFORM_EMCC
-  emscripten_set_main_loop_arg(main_loop, &ctx, 60, 1);
-#else
-  SDL_Event event;
-  int isQuit = 0;
-  while(isQuit == 0) {
-    if (SDL_PollEvent(&event)) {
-      if (event.type == SDL_QUIT) {
-        isQuit = 1;
-      }
-    }
-    main_loop(&ctx);
-    SDL_Delay(10);
-  }
-  SDL_Quit();
-#endif
+  #ifdef PLATFORM_EMCC
+    emscripten_set_main_loop_arg(main_loop, &ctx, 60, 1);
+  #else
+    do {
+      main_loop(&ctx);
+    } while(_isQuit == 0);
+  #endif
   return 0;
 }
 
@@ -255,8 +246,3 @@ GLuint cglu_loadShader(GLenum type, const char *shaderSrc) {
 
   return shader;
 }
-
-
-
-
-
