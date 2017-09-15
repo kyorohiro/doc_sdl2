@@ -123,7 +123,10 @@ void _onDisplay() {
       }  
   }
 #else
-  SDL_BlitSurface(SDL_DisplayFormat(textSurface), NULL, image, NULL);
+  SDL_Surface *tmp = SDL_DisplayFormat(textSurface);
+  SDL_FreeSurface(textSurface);
+  SDL_BlitSurface(tmp, NULL, image, NULL);
+  textSurface = tmp;
 #endif
   glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
