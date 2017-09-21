@@ -12,7 +12,8 @@ rule obj
 rule exe
  command = ${cmd} ${cc} $in -o $out -s USE_SDL_TTF=2 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -O2
 rule exeExt
- command = ${cmd} ${cc} $in -o $out -s USE_SDL=2 -s USE_SDL_TTF=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='["png"]' --preload-file assets -O2
+ command = ${cmd} ${cc} $in -o $out -s USE_SDL=2 -s USE_SDL_TTF=2 -s USE_SDL_IMAGE=2 --preload-file assets -O2
+# command = ${cmd} ${cc} $in -o $out -s USE_SDL=2 -s USE_SDL_TTF=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='["png"] --preload-file assets -O2
 
 
 rule obj01
@@ -24,9 +25,16 @@ rule exeExt01
 #  command = ${cc} $in -o $out -s USE_SDL=1 -s USE_SDL_TTF=1 -s USE_SDL_IMAGE=1 --preload-file assets -O2 -s STB_IMAGE=1
 
 
+subninja sdl2_gl${sep}build.ninja
+subninja sdl2_gl_triangle${sep}build.ninja
+subninja sdl2_gl_texture${sep}build.ninja
+subninja sdl2_gl_ttf${sep}build.ninja
+subninja sdl2_gl_textureFromRGBSurface${sep}build.ninja
 subninja sdl2_createWindow${sep}build.ninja
 subninja sdl2_event${sep}build.ninja
-
+subninja sdl2_image${sep}build.ninja
+subninja sdl2_font${sep}build.ninja
+subninja sdl2_mixer${sep}build.ninja
 
 
 subninja sdl1_createWindow${sep}build.ninja
