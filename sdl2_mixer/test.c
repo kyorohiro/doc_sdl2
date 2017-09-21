@@ -46,14 +46,14 @@ int main( int argc, char* args[] )
   if (SDL_Init(SDL_INIT_AUDIO) < 0) {
 //  if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
       printf("Failed to init SDL\n");
-      exit(1);
+      return 0;//exit(1);
   }
   int flags = MIX_INIT_OGG;
   int result = 0;
   if (flags != (result = Mix_Init(flags))) {
       printf("Could not initialize mixer (result: %d).\n", result);
       printf("Mix_Init: %s\n", Mix_GetError());
-      exit(1);
+      return 0;//exit(1);
   }
   SDL_Window* window;
   SDL_Renderer* renderer;
