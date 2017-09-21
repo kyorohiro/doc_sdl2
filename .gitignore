@@ -13,3 +13,4 @@
 *.mem
 _book
 node_modules
+*.dll
