@@ -26,9 +26,9 @@ libSDLMixer =
 rule obj
  command = ${cc} -c $in -o $out -LC:\MinGW\lib -I${incSDL2} -DPLATFORM_MINGW
 rule exe
- command = ${cc} $in -o $out -IC:\MinGW\indclude -LC:\MinGW\lib -I${incSDL2} -L${libSDL2} -I${incSDL2Image} -L${libSDL2Image} -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+ command = ${cc} $in -o $out -IC:\MinGW\indclude -LC:\MinGW\lib -I${incSDL2} -L${libSDL2} -I${incSDL2Image} -L${libSDL2Image} -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 rule exeExt
- command = ${cc} $in -o $out -IC:\MinGW\indclude -LC:\MinGW\lib -I${incSDL2} -L${libSDL2} -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+ command = ${cc} $in -o $out -IC:\MinGW\indclude -LC:\MinGW\lib -I${incSDL2} -L${libSDL2} -w -Wl,-subsystem,windows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 
 
 #subninja sdl2_gl${sep}build.ninja
@@ -39,5 +39,5 @@ rule exeExt
 subninja sdl2_event${sep}build.ninja
 subninja sdl2_createWindow${sep}build.ninja
 subninja sdl2_image${sep}build.ninja
-#subninja sdl2_font${sep}build.ninja
+subninja sdl2_font${sep}build.ninja
 #subninja sdl2_mixer${sep}build.ninja
