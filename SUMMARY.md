@@ -1,10 +1,11 @@
 # Basic
 - [About](README.md)
 - [Introduction](doc/README.md)
-- Install Emscripten
+- CommandLine に 慣れよう
+-- [Windows CMD](doc/cmd/cmdWindows.md)
+- Emscripten　を Install
 -- [Windows MinGW](doc/install/emccWindows.md)
 -- [OSX Mac](doc/install/emccOsx.md)
-- [Command Line](doc/command/cmdWindows.md)
 - [Install MinGw]()
 - [Install Ninja]()
 

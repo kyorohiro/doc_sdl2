@@ -1,11 +1,13 @@
 # SDL2_DOC
 
-SDL2 memo
-
-# Basic
+# Index
+- [About](README.md)
 - [Introduction](doc/README.md)
-- [Install Emscripten](doc/install/emccWindows.md)
-- [Command Line](doc/command/cmdWindows.md)
+- CommandLine に 慣れよう
+-- [Windows CMD](doc/cmd/cmdWindows.md)
+- Emscripten　を Install
+-- [Windows MinGW](doc/install/emccWindows.md)
+-- [OSX Mac](doc/install/emccOsx.md)
 - [Install MinGw]()
 - [Install Ninja]()
 
