@@ -1,7 +1,9 @@
 # Basic
 - [About](README.md)
 - [Introduction](doc/README.md)
-- [Install Emscripten](doc/install/emccWindows.md)
+- Install Emscripten
+-- [Windows MinGW](doc/install/emccWindows.md)
+-- [OSX Mac](doc/install/emccOsx.md)
 - [Command Line](doc/command/cmdWindows.md)
 - [Install MinGw]()
 - [Install Ninja]()
