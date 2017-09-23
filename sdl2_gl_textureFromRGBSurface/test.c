@@ -2,13 +2,32 @@
 #define GL_GLEXT_PROTOTYPES
 #include <SDL.h>
 #include <SDL_events.h>
-#include <SDL_opengl.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
 #ifdef PLATFORM_EMCC
 #include <emscripten.h>
 #endif
+
+
+//
+// GL
+#ifdef PLATFORM_MINGW
+#include <glew.h>
+#if defined(GLEW_EGL)
+#include <eglew.h>
+#elif defined(GLEW_OSMESA)
+#define GLAPI extern
+#include <osmesa.h>
+#elif defined(_WIN32)
+#include <wglew.h>
+#elif !defined(__APPLE__) && !defined(__HAIKU__) || defined(GLEW_APPLE_GLX)
+#include <glxew.h>
+#endif
+#else
+#include <SDL_opengl.h>
+#endif
+
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -176,7 +195,7 @@ void _onDisplay() {
 
 }
 
-int main()
+int main( int argc, char** args )
 {
   SDL_Init(SDL_INIT_VIDEO);
 
@@ -186,20 +205,35 @@ int main()
   }
 
   SDL_Window *window;
+ #ifdef PLATFORM_MINGW
+  SDL_GLContext glContext;
+  window = SDL_CreateWindow("sdlglshader", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_OPENGL);
+  glContext = SDL_GL_CreateContext(window);
+#else
   SDL_Renderer *renderer;
-
   SDL_CreateWindowAndRenderer(600, 400, 0, &window, &renderer);
-
-  SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+  SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
   SDL_RenderClear(renderer);
+#endif
+
+#ifdef PLATFORM_MINGW
+  glewExperimental = GL_TRUE; 
+  GLenum glewError = glewInit();
+  if( glewError != GLEW_OK ) {
+      printf( "Failed at glewInit! %s\n", glewGetErrorString( glewError ) );
+  }
+#endif
 
   //
   //
   _onInit();
   _onDisplay();
   //
-  //
+#ifdef PLATFORM_MINGW
+  SDL_GL_SwapWindow(window);
+#else
   SDL_RenderPresent(renderer);
+#endif
 
   #ifdef PLATFORM_EMCC
     emscripten_set_main_loop_arg(main_loop, &ctx, 60, 1);
