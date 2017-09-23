@@ -3,6 +3,8 @@
 #include <SDL.h>
 #include <SDL_events.h>
 
+//
+// GL
 #ifdef PLATFORM_MINGW
 #include <glew.h>
 #if defined(GLEW_EGL)
@@ -18,7 +20,9 @@
 #else
 #include <SDL_opengl.h>
 #endif
-//
+
+
+
 #include <stdio.h>
 
 #ifdef PLATFORM_EMCC

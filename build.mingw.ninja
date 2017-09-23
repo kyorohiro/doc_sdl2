@@ -33,7 +33,7 @@ rule exeExt
 
 subninja sdl2_gl${sep}build.ninja
 subninja sdl2_gl_triangle${sep}build.ninja
-#subninja sdl2_gl_texture${sep}build.ninja
+subninja sdl2_gl_texture${sep}build.ninja
 #subninja sdl2_gl_ttf${sep}build.ninja
 #subninja sdl2_gl_textureFromRGBSurface${sep}build.ninja
 
