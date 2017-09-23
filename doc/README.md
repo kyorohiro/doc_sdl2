@@ -1,10 +1,19 @@
-# C x Emscripten x SDL2
+# C x Emscripten x SDL
 
 Emscriptenを利用すると事で、C言語でブラウザー上で動作するアプリケーションを作成できます。
 
+本書では、OpenGL と SDL と Enscripten を利用して
+ブラウザー用、Window用、OSX用のゲームを作成していきます。
 
 
-### C言語とは
+2017年9月の時点での時点で
+
+
+
+### C言語はHacker必須の言語
+
+本書では、C言語を利用します。C++ではなくて、純粋なC言語です。
+
 
 C言語は最古の言語のひとつです。
 ...
