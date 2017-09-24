@@ -18,7 +18,7 @@
 - [足し算をしてみよう](doc/helloworld/windowsHelloCalc.md)
 ##### OSX
 
-###付録
+### 付録
 #### Pathの通し方
 - [Windows CMD](doc/appendix/pathWindows.md)
 #### GCCのインストール
