@@ -12,5 +12,8 @@
 - [Windows MinGW](doc/helloworld/helloWindows.md)
 - OSX Terminal
 
-# SDL Sample
-- [Create Window](createWindow/README.md)
+###付録
+#### Pathの通し方
+- [Windows CMD](doc/appendix/pathWindows.md)
+#### GCCのインストール
+- [Windows MinGW](doc/appendix/gccWindows.md)
