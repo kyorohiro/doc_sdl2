@@ -1,5 +1,23 @@
 # SDL2_DOC
 
+### Build as html on osx
+
+ninja -f build.emcc.osx.ninja
+
+### Build as html on mingw
+
+ninja -f build.emcc.win.build
+
+### Build as native app on osx
+
+ninja -f build.osx.ninja
+
+### Build as native app on mingw
+
+ninja -f build.mingw.ninja
+
+
+
 # Index
 - [About](README.md)
 - [Introduction](doc/README.md)
