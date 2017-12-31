@@ -1,6 +1,0 @@
-{
-    "plugins": [
-      "code-editor",
-      "emscripten@git+https://github.com/kyorohiro/gitbook-plugin-emscripten.git"
-    ]
-}
